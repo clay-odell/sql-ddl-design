@@ -1,0 +1,40 @@
+DROP DATABASE IF EXISTS medical_center;
+
+CREATE DATABASE medical_center;
+
+\c medical_center;
+
+CREATE TABLE doctors
+(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    specialty TEXT
+);
+
+CREATE TABLE patients
+(
+    id SERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    date_of_birth TEXT
+);
+
+CREATE TABLE diagnoses
+(
+    id SERIAL PRIMARY KEY,
+    diagnosis_name TEXT
+);
+
+CREATE TABLE visits
+(
+    visit_id SERIAL PRIMARY KEY,
+    patient_id INTEGER REFERENCES patients,
+    doctor_id INTEGER REFERENCES doctors,
+    diagnosis_id INTEGER REFERENCES diagnoses
+);
+
+
+CREATE TABLE patient_doctor
+(
+    patient_id INTEGER REFERENCES patients,
+    doctor_id INTEGER REFERENCES doctors
+);

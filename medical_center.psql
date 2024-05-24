@@ -15,7 +15,7 @@ CREATE TABLE patients
 (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    date_of_birth TEXT
+    date_of_birth DATE
 );
 
 CREATE TABLE diagnoses
